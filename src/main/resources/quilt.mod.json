@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "gay.pyrrha",
+    "id": "techd",
+    "version": "$version",
+    "metadata": {
+      "name": "Tech'd",
+      "description": "t e c h n o l o g y",
+      "contact": {
+        "sources": "https://github.com/JustPyrrha/Techd",
+        "issues": "https://github.com/JustPyrrha/Techd/issues"
+      },
+      "contributors": {
+        "JustPyrrha": "Author"
+      }
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "gay.pyrrha.techd.Techd",
+      "fabric-datagen": "gay.pyrrha.techd.data.ModDataGenerator"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[versions]
+minecraft = "1.19.3"
+quilt_loom = "1.+"
+quilt_licenser = "1.+"
+quilt_loader = "0.18.1-beta.68"
+quilt_mappings = "1.19.3+build.23"
+quilt_qsl = "4.0.0-beta.10+1.19.3"
+quilt_fapi = "5.0.0-beta.4+0.73.0-1.19.3"
+junit = "5.8.1"
+minotaur = "2.+"
+changelog = "2.+"
+
+[libraries]
+minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+quilt_mappings = { group = "org.quiltmc", name = "quilt-mappings", version.ref = "quilt_mappings" }
+quilt_loader = { group = "org.quiltmc", name = "quilt-loader", version.ref = "quilt_loader" }
+quilt_qsl_all = { group = "org.quiltmc", name = "qsl", version.ref = "quilt_qsl" }
+quilt_fapi_datagen = { group = "org.quiltmc.quilted-fabric-api", name = "fabric-data-generation-api-v1", version.ref = "quilt_fapi" }
+junit_api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junit_engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+
+[plugins]
+loom = { id = "org.quiltmc.loom", version.ref = "quilt_loom" }
+licenser = { id = "org.quiltmc.gradle.licenser", version.ref = "quilt_licenser" }
+minotaur = { id = "com.modrinth.minotaur", version.ref = "minotaur" }
+changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }

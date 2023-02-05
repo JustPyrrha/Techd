@@ -1,0 +1,8 @@
+.gradle/
+.idea/
+build/
+run/
+src/main/generated/.cache/
+
+*.hprof
+*.iml
