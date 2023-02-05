@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.licenser)
     alias(libs.plugins.minotaur)
     alias(libs.plugins.changelog)
+    alias(libs.plugins.githooks)
 }
 
 val buildNumber: String = if (isCI && System.getenv(actionsRunNumber) != null) {
@@ -130,4 +131,8 @@ changelog {
     groups.set(listOf("Added", "Changed", "Deprecated", "Removed", "Fixed", "Security"))
     lineSeparator.set("\n")
     combinePreReleases.set(true)
+}
+
+gitHooks {
+    setHooks(mapOf("pre-commit" to "applyLicenses"))
 }

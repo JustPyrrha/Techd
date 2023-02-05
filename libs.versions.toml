@@ -9,6 +9,7 @@ quilt_fapi = "5.0.0-beta.4+0.73.0-1.19.3"
 junit = "5.8.1"
 minotaur = "2.+"
 changelog = "2.+"
+githooks = "0.0.2"
 
 [libraries]
 minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
@@ -24,3 +25,4 @@ loom = { id = "org.quiltmc.loom", version.ref = "quilt_loom" }
 licenser = { id = "org.quiltmc.gradle.licenser", version.ref = "quilt_licenser" }
 minotaur = { id = "com.modrinth.minotaur", version.ref = "minotaur" }
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
+githooks = { id = "com.github.jakemarsden.git-hooks", version.ref = "githooks" }
