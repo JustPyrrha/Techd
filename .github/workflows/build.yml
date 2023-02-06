@@ -27,9 +27,10 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - name: Build Mod
         run: ./gradlew build
-      - name: Maven Publish
+      - name: Publish
         if: ${{ github.event_name != 'pull_request' }}
         env:
           ORG_GRADLE_PROJECT_mvnUsername: ci
           ORG_GRADLE_PROJECT_mvnPassword: ${{ secrets.MAVEN_TOKEN }}
-        run: ./gradlew publish
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: ./gradlew publish modrinth modrinthSyncBody
