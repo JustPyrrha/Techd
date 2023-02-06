@@ -23,6 +23,7 @@
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": "gay.pyrrha.techd.Techd",
+      "client_init": "gay.pyrrha.techd.client.TechdClient",
       "fabric-datagen": "gay.pyrrha.techd.data.ModDataGenerator"
     }
   }
