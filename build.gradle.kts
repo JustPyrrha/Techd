@@ -22,7 +22,7 @@ val buildNumber: String = if (isCI && System.getenv(actionsRunNumber) != null) {
     "local"
 }
 val modVersion = "0.1.0-a.$buildNumber"
-
+val isSnapshot = modVersion.contains("-a.") || modVersion.contains("-b.")
 group = "gay.pyrrha"
 version = "$modVersion+${libs.versions.minecraft.get()}"
 
@@ -100,6 +100,7 @@ license {
 }
 
 modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
     projectId.set("Ij0pCD2g")
     versionNumber.set(modVersion)
     versionType.set(
@@ -117,13 +118,17 @@ modrinth {
         required.project("qsl")
     }
     changelog.set(provider {
-        project.changelog.renderItem(
-            project.changelog
-                .getUnreleased()
-                .withHeader(false)
-                .withEmptySections(false),
-            Changelog.OutputType.MARKDOWN
-        )
+        if(isSnapshot) {
+            "No changelog was specified." // default listed in minotaur readme.
+        } else {
+            project.changelog.renderItem(
+                project.changelog
+                    .getUnreleased()
+                    .withHeader(false)
+                    .withEmptySections(false),
+                Changelog.OutputType.MARKDOWN
+            )
+        }
     })
     syncBodyFrom.set(rootProject.file("README.md").readText())
 }
@@ -157,11 +162,7 @@ publishing {
         }
     }
     repositories {
-        val repo = if(modVersion.contains("-a.") || modVersion.contains("-b.")) {
-            "snapshots"
-        } else {
-            "releases"
-        }
+        val repo = if(isSnapshot) { "snapshots" } else { "releases" }
         maven("https://mvn.pyrrha.gay/$repo/") {
             name = "mvn"
             credentials(PasswordCredentials::class)
