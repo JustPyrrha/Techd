@@ -12,6 +12,8 @@ plugins {
     alias(libs.plugins.minotaur)
     alias(libs.plugins.changelog)
     alias(libs.plugins.githooks)
+    `maven-publish`
+    signing
 }
 
 val buildNumber: String = if (isCI && System.getenv(actionsRunNumber) != null) {
@@ -63,6 +65,17 @@ tasks {
     getByName<Test>("test") {
         useJUnitPlatform()
     }
+
+    jar {
+        from("LICENSE") {
+            rename { "${it}_${project.base.archivesName}" }
+        }
+    }
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    withSourcesJar()
 }
 
 loom {
@@ -135,4 +148,26 @@ changelog {
 
 gitHooks {
     setHooks(mapOf("pre-commit" to "checkLicenses"))
+}
+
+publishing {
+    publications {
+        create("mvn", MavenPublication::class.java) {
+            from(components["java"])
+        }
+    }
+    repositories {
+        val repo = if(modVersion.contains("-a.") || modVersion.contains("-b.")) {
+            "snapshots"
+        } else {
+            "releases"
+        }
+        maven("https://mvn.pyrrha.gay/$repo/") {
+            name = "mvn"
+            credentials(PasswordCredentials::class)
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+        }
+    }
 }
