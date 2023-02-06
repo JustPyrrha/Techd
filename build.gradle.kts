@@ -25,6 +25,7 @@ val modVersion = "0.1.0-a.$buildNumber"
 val isSnapshot = modVersion.contains("-a.") || modVersion.contains("-b.")
 group = "gay.pyrrha"
 version = "$modVersion+${libs.versions.minecraft.get()}"
+println("Techd: $version")
 
 repositories {
     mavenCentral()
