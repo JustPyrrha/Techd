@@ -134,5 +134,5 @@ changelog {
 }
 
 gitHooks {
-    setHooks(mapOf("pre-commit" to "applyLicenses"))
+    setHooks(mapOf("pre-commit" to "checkLicenses"))
 }
