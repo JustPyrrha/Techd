@@ -13,11 +13,6 @@
       },
       "contributors": {
         "JustPyrrha": "Author"
-      },
-      "license": {
-        "name": "Apache License 2.0",
-        "id": "Apache-2.0",
-        "url": "https://github.com/JustPyrrha/Techd/blob/main/LICENSE"
       }
     },
     "intermediate_mappings": "net.fabricmc:intermediary",

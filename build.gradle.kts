@@ -29,6 +29,9 @@ println("Techd: $version")
 
 repositories {
     mavenCentral()
+    maven("https://maven.quiltmc.org/repository/snapshot/") {
+        name = "Quilt (Snapshots)"
+    }
 }
 
 dependencies {
